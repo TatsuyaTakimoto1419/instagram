@@ -11,7 +11,7 @@
         <!--Comment View Controller-->
         <scene sceneID="jpc-my-JH1">
             <objects>
-                <viewController storyboardIdentifier="Comment" id="U6n-oD-iA9" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Comment" modalPresentationStyle="fullScreen" id="U6n-oD-iA9" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gGI-dt-h2z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,6 +22,7 @@
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="コメントを入れてください。" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RsG-O4-IFd">
                                 <rect key="frame" x="10" y="792" width="300" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="0LH-QK-XcH"/>
                                 </constraints>
@@ -54,7 +55,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JvU-sW-IaC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fYR-a4-ha4" firstAttribute="top" secondItem="JvU-sW-IaC" secondAttribute="top" id="0zA-A0-e63"/>
                             <constraint firstItem="CmP-o2-mHC" firstAttribute="bottom" secondItem="JvU-sW-IaC" secondAttribute="bottom" id="2yc-9U-op6"/>

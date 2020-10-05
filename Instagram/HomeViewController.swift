@@ -73,19 +73,21 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
                     // TableViewの表示を更新する
                     self.tableView.reloadData()
                 }
-                
-                }else{
-                    // ログイン未(またはログアウト済み)
-                   
-                   if listener != nil{
-                       // listener登録済みなら削除してpostArrayをクリアする
-                       listener.remove()
-                       listener = nil
-                       postArray = []
-                       tableView.reloadData()
-                   }
             }
+                
+        }else{
+                // ログイン未(またはログアウト済み)
+               
+               if listener != nil{
+                   // listener登録済みなら削除してpostArrayをクリアする
+                   listener.remove()
+                   listener = nil
+                   postArray = []
+              
+               }
         }
+       
+        tableView.reloadData()
         
     }
     
@@ -104,11 +106,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         //xibで　コメントボタン　action
         cell.CommentButton.addTarget(self, action: #selector(doComment(_:forEvent:)), for: .touchUpInside)
-        
-      
-        
-        
-        
+    
         
         return cell
     }
@@ -173,7 +171,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         //CommenViewControllerに画面遷移　モーデル
         let CommentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment")as! CommentViewController
         
-        
+       
         //CommentViewControllerに値を送る
         CommentViewController.postdata = postData
         

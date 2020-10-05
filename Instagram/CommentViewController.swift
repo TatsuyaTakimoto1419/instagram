@@ -38,7 +38,7 @@ class CommentViewController: UIViewController {
         var commentText:String?
         commentText = CommentTextField.text!
         
-        commentText = (Auth.auth().currentUser?.displayName!)! + ":" + commentText!
+        commentText = (Auth.auth().currentUser!.displayName!) + ":" + commentText!
         
        var updateValue:FieldValue
         
