@@ -8,13 +8,19 @@
 import UIKit
 import Firebase
 
-class CommentViewController: UIViewController {
+class CommentViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+    
+    
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     
     @IBOutlet weak var CommentTextField: UITextField!
     
     @IBOutlet weak var backButoon: UIButton!
     
-    //PostDataを受け取る
+    //PostDataを受け取る HomeViewControllerより
     var postdata : PostData!
     
    
@@ -22,7 +28,9 @@ class CommentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //tableView
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     
@@ -37,6 +45,7 @@ class CommentViewController: UIViewController {
         //TextField からText取得
         var commentText:String?
         commentText = CommentTextField.text!
+        
         
         commentText = (Auth.auth().currentUser!.displayName!) + ":" + commentText!
         
@@ -55,6 +64,28 @@ class CommentViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    //tableViewにコメントを反映させる
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return postdata.comment.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let Cell = tableView.dequeueReusableCell (withIdentifier:"Cell", for: indexPath)
+        
+        
+        let commentArray = postdata.comment
+        
+        Cell.textLabel?.text = commentArray[indexPath.row]
+        
+        return Cell
+    }
+    
+    
+    
     
 
 }
