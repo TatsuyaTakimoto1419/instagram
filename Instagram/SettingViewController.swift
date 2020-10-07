@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController,UITextFieldDelegate {
 
     
     @IBOutlet weak var displayNameTextField: UITextField!
@@ -19,6 +19,8 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        self.displayNameTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -93,9 +95,12 @@ class SettingViewController: UIViewController {
                    tabBarController?.selectedIndex = 0
         }
     }
-   
-   
-        
+   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+          
+    if (self.displayNameTextField.isFirstResponder){
+                self.displayNameTextField.resignFirstResponder()
+    }
+        }
     
     
     

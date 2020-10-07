@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class CommentViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class CommentViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
     
     
     
@@ -31,6 +31,8 @@ class CommentViewController: UIViewController, UITableViewDelegate,UITableViewDa
         //tableView
         tableView.delegate = self
         tableView.dataSource = self
+        self.CommentTextField.delegate = self
+        
     }
     
     
@@ -84,6 +86,17 @@ class CommentViewController: UIViewController, UITableViewDelegate,UITableViewDa
         return Cell
     }
     
+    
+    
+
+    
+    func textFieldShouldReturn(_ CommentTextField: UITextField) -> Bool {
+        CommentTextField.resignFirstResponder()
+        
+        print("dismiss Keyboard")
+        return true
+    }
+   
     
     
     

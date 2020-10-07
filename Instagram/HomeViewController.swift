@@ -151,7 +151,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }
         
     }
-    
+
     
     @objc func doComment(_ sender:UIButton, forEvent event:UIEvent){
         print("DEBUG_PRINT: Commentボタンがタップされました。")
@@ -178,5 +178,44 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         self.present(CommentViewController, animated: true, completion: nil)
         
     }
+    
+    
+    
+    //xib cellが削除可能なのを伝える
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return.delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            
+      
+            
+               let postData = postArray[indexPath.row]
+          
+            let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
+          
+         
+        //firebase からドキュメントを削除
+            postRef.collection(Const.PostPath).document(postData.id).delete(){ err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                   
+                }
+            
+        //postArray 消す
+            
+                self.postArray.remove(at: indexPath.row)
+                
+            
+            //cell段落を消す
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    }
+    
 
 }
